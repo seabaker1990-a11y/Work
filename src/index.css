@@ -1,0 +1,187 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #111827;
+  --color-bg-deep: #0b1020;
+  --color-card: rgba(255, 255, 255, 0.05);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #7c3aed;
+  --color-accent-cyan: #38bdf8;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --font-sans: 'Inter', 'HarmonyOS Sans', 'MiSans', 'Source Han Sans SC', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-primary);
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dashboard-bg {
+  background-color: var(--color-bg-primary);
+  background-image: linear-gradient(
+    160deg,
+    var(--color-bg-deep) 0%,
+    var(--color-bg-primary) 45%,
+    var(--color-bg-secondary) 100%
+  );
+  background-attachment: fixed;
+}
+
+.dashboard-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(124, 58, 237, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 100%, rgba(56, 189, 248, 0.05) 0%, transparent 45%);
+  z-index: 0;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card:hover {
+  border-color: rgba(124, 58, 237, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(124, 58, 237, 0.1);
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* FullCalendar dark theme overrides */
+.fc {
+  --fc-border-color: rgba(255, 255, 255, 0.08);
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: rgba(255, 255, 255, 0.03);
+  --fc-today-bg-color: rgba(124, 58, 237, 0.15);
+  --fc-event-border-color: transparent;
+  font-family: var(--font-sans);
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.fc .fc-button {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #e2e8f0 !important;
+  border-radius: 8px !important;
+  font-size: 0.85rem !important;
+  padding: 0.35rem 0.75rem !important;
+  transition: all 0.2s ease;
+}
+
+.fc .fc-button:hover {
+  background: rgba(124, 58, 237, 0.25) !important;
+  border-color: rgba(124, 58, 237, 0.4) !important;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background: rgba(124, 58, 237, 0.4) !important;
+}
+
+.fc .fc-col-header-cell-cushion,
+.fc .fc-daygrid-day-number {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+  background: #7c3aed;
+  color: white;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.fc .fc-daygrid-day-frame {
+  min-height: 80px;
+}
+
+.fc-event {
+  border-radius: 6px !important;
+  padding: 2px 6px !important;
+  font-size: 0.75rem !important;
+  cursor: pointer;
+}
+
+.light-theme {
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #f1f5f9;
+  --color-bg-deep: #e2e8f0;
+  color: #1e293b;
+}
+
+.light-theme .glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.light-theme .dashboard-bg {
+  background-color: var(--color-bg-primary);
+  background-image: linear-gradient(
+    160deg,
+    #ffffff 0%,
+    var(--color-bg-primary) 50%,
+    var(--color-bg-secondary) 100%
+  );
+}
+
+@keyframes pulse-danger {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.overdue-pulse {
+  animation: pulse-danger 2s ease-in-out infinite;
+}
